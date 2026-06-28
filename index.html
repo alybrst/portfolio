@@ -1,15 +1,296 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Alyssia Berset</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Portfolio</h1>
-    <h2>Présentation</h2>
-    <h2>Travaux vidéos</h2>
-    <h2>Compétences</h2>
-    <h2>Contacts</h2>
+  <!-- EN-TÊTE FIXE -->
+  <header>
+    <div class="logo">Alyssia <span>Berset</span></div>
+
+    <!-- Navigation principale -->
+    <nav id="main-nav">
+      <a href="#hero">Accueil</a>
+      <a href="#about">Qui suis-je</a>
+      <a href="#shortfilm">Court-Métrage</a>
+      <a href="#docu">Documentaire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Bouton burger (menu mobile) -->
+    <button class="burger" id="burger-btn" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+
+  <!-- SECTION 1 — HÉROS -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Audiovisuel · Production · Post-production</p>
+      <h1 class="hero-title">Portfolio<br/><em>d'Alyssia Berset</em></h1>
+      <!-- Texte clignotant pour inviter à défiler -->
+      <p class="blink-text">Défiler pour voir la suite</p>
+    </div>
+  </section>
+
+
+  <!-- SECTION 2 — QUI SUIS-JE -->
+  <section id="about">
+    <div class="about-grid">
+
+      <div class="profile-img-wrap reveal">
+        <img src="images/profilPic.jpg" alt="Portrait d'Alyssia Berset" />
+      </div>
+
+      <div class="reveal">
+        <h2 class="section-title">Qui suis-je ?</h2>
+
+        <!-- Fiche d'identité -->
+        <div class="identity-card">
+          <h3>Fiche d'identité</h3>
+          <div class="identity-row">
+            <span class="identity-label">Nom</span>
+            <span>Alyssia BERSET</span>
+          </div>
+          <div class="identity-row">
+            <span class="identity-label">Âge</span>
+            <span>23 ans</span>
+          </div>
+          <div class="identity-row">
+            <span class="identity-label">Domaine</span>
+            <span>Production et post-production audiovisuelle</span>
+          </div>
+          <div class="identity-row">
+            <span class="identity-label">Hobbies</span>
+            <span>Lecture, tricot, vlogs, jeux d'énigmes</span>
+          </div>
+        </div>
+
+        <!-- Menus déroulants : langues & compétences -->
+        <div class="details-group">
+
+          <!-- Compétences linguistiques -->
+          <details>
+            <summary>Compétences linguistiques</summary>
+            <div class="skills-list">
+              <!-- Chaque barre a un attribut data-level = valeur sur 5 -->
+              <div class="skill-item">
+                <label>Français <span>5 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="5"></div></div>
+              </div>
+              <div class="skill-item">
+                <label>Anglais <span>5 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="5"></div></div>
+              </div>
+              <div class="skill-item">
+                <label>Coréen <span>2,5 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="2.5"></div></div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Compétences professionnelles -->
+          <details>
+            <summary>Compétences professionnelles</summary>
+            <div class="skills-list">
+              <div class="skill-item">
+                <label>Premiere Pro <span>5 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="5"></div></div>
+              </div>
+              <div class="skill-item">
+                <label>After Effects <span>2 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="2"></div></div>
+              </div>
+              <div class="skill-item">
+                <label>Travail d'équipe <span>4,5 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="4.5"></div></div>
+              </div>
+              <div class="skill-item">
+                <label>Autonomie <span>4 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="4"></div></div>
+              </div>
+              <div class="skill-item">
+                <label>Bonne humeur <span>5 / 5</span></label>
+                <div class="bar-track"><div class="bar-fill" data-level="5"></div></div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 3 — COURT-MÉTRAGE -->
+  <section id="shortfilm">
+    <div class="film-grid">
+
+      <!-- Affiche format portrait -->
+      <div class="poster-wrap reveal">
+        <img src="images/TLOO.png" alt="Affiche — The Language of Others" />
+      </div>
+
+      <div class="reveal">
+        <h2 class="section-title">Court-Métrage</h2>
+        <h3 style="font-family:'Cormorant Garant',serif; font-size:1.5rem; color:var(--blue); margin-bottom:1rem;">
+          The Language of Others
+        </h3>
+
+        <p class="film-text">
+          Dans le cadre de mon double master à l'Université de Dong-Eui, en Corée du Sud,
+          j'ai réalisé ce court-métrage multilingue pour mon projet de fin d'étude.
+          Les acteurs étaient Français, Coréen et Brésilien, et l'équipe de tournage était
+          française, coréenne et chinoise. Ce court-métrage m'a permit de découvrir les enjeux
+          d'un projet interculturel, tout en travaillant sur mes compétences d'écriture,
+          de production, de réalisation et de montage.
+        </p>
+
+        <!-- Synopsis encadré -->
+        <div class="synopsis-block">
+          <h4>Synopsis</h4>
+          <p>
+            Dans un monde où des lunettes traduisent les conversations, une étudiante française
+            en échange en Corée du Sud se retrouve sans aucun moyen de comprendre après un
+            accrochage avec son amie.
+          </p>
+        </div>
+
+        <!-- Lien vers le court-métrage -->
+        <a
+          href="https://drive.google.com/drive/folders/1zE0CYF4jrsnhl4jyaLoHPH8OpkT-wQGg?usp=drive_link"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+        >Voir le court-métrage →</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- SECTION 4 — DOCUMENTAIRE INTERACTIF -->
+  <section id="docu">
+    <div class="docu-inner">
+
+      <div class="docu-text reveal">
+        <h2 class="section-title">Documentaire Interactif</h2>
+        <h3 style="font-family:'Cormorant Garant',serif; font-size:1.5rem; color:rgba(255,255,255,0.9); margin-bottom:1rem;">
+          Vivre sans les Chaebols
+        </h3>
+
+        <p class="film-text">
+          Le documentaire interactif "Vivre sans les chaebols" a été tourné à Busan, en Corée du Sud,
+          avec une équipe franco-coréenne. Durant la réalisation de ce projet, j'ai porté plusieurs
+          casquettes : cheffe de projet, réalisatrice, actrice, monteuse vidéo, interprète, traductrice…
+        </p>
+
+        <div class="synopsis-block">
+          <h4>Synopsis</h4>
+          <p>
+            Accompagnez une française et son amie coréenne dans leur découverte de ce qu'impliquerait
+            la vie sans ces grands conglomérats qui dominent l'économie sud-coréenne.
+          </p>
+        </div>
+
+        <a
+          href="https://vivresanschaebols.mastercmw.com/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+          style="margin-top:0.5rem;"
+        >Voir le site →</a>
+      </div>
+
+      <!-- Lecteur Vimeo en 16:9 -->
+      <div class="vimeo-wrap reveal">
+        <iframe
+          src="https://player.vimeo.com/video/1204627880?badge=0&autopause=0&player_id=0&app_id=58479"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          title="Vivre sans les Chaebols"
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PIED DE PAGE — CONTACT + MENTIONS LÉGALES -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <h2 class="section-title">Contact</h2>
+      <p class="footer-subtitle">Une question, une collaboration ? Écrivez-moi !</p>
+
+      <!-- Formulaire de contact -->
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="email">Votre adresse e-mail</label>
+          <input type="email" id="email" name="email" placeholder="exemple@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" placeholder="Décrivez votre demande…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-end; margin-top:0.4rem;">
+          Envoyer le message
+        </button>
+      </form>
+
+      <!-- Message affiché après soumission du formulaire -->
+      <div id="form-confirm">
+        ✓ Merci ! Votre message a bien été envoyé. Je vous répondrai dès que possible.
+      </div>
+    </div>
+
+    <!-- Barre du bas : copyright + bouton mentions légales -->
+    <div class="footer-bottom">
+      <span>© 2026 Alyssia Berset — Tous droits réservés</span>
+      <!-- Bouton qui ouvre la modale de mentions légales -->
+      <button class="mentions-btn" id="mentions-btn">Mentions légales</button>
+    </div>
+  </footer>
+
+
+  <!-- ======================================================
+       MODALE MENTIONS LÉGALES
+       Pop-up avec informations légales et mention de l'IA
+  ====================================================== -->
+  <div class="modal-overlay" id="mentions-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
+      <h2 id="modal-title">Mentions légales</h2>
+
+      <p class="modal-section-title">Éditeur du site</p>
+      <p>Ce site est un portfolio personnel édité par Alyssia Berset, dans le cadre d'un devoir.</p>
+
+      <p class="modal-section-title">Hébergement</p>
+      <p>Ce site est hébergé par un prestataire tiers. Aucune donnée personnelle n'est collectée sans le consentement explicite de l'utilisateur.</p>
+
+      <p class="modal-section-title">Propriété intellectuelle</p>
+      <p>L'ensemble des contenus présents sur ce site (textes, images, vidéos, graphismes) sont la propriété exclusive d'Alyssia Berset, sauf mention contraire. Toute reproduction est interdite sans autorisation préalable.</p>
+
+      <p class="modal-section-title">Données personnelles</p>
+      <p>Le formulaire de contact collecte uniquement votre adresse e-mail et votre message, dans le seul but de vous répondre. Ces données ne sont ni transmises à des tiers ni conservées au-delà de la durée nécessaire au traitement de votre demande. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.</p>
+
+      <p class="modal-section-title">Recours à l'intelligence artificielle</p>
+      <p>Le code source de ce site a partiellement été écrit à l'aide d'un outil d'intelligence artificielle (Claude, par Anthropic), puis relu, personnalisé et validé par Alyssia Berset. Les contenus textuels et médias sont authentiques et produits par l'autrice.</p>
+
+      <p class="modal-section-title">Cookies</p>
+      <p>Ce site n'utilise pas de cookies de traçage ou publicitaires.</p>
+
+      <p style="margin-top:1.5rem; font-size:0.8rem; color:#999;">Dernière mise à jour : 2026</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>

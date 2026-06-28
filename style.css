@@ -1,0 +1,617 @@
+/* VARIABLES GLOBALES — palette, typographie, espacements */
+:root {
+  --navy:      #203665;   /* couleur principale sombre */
+  --blue:      #4976be;   /* bleu intermédiaire */
+  --light-blue:#e8f0fb;   /* fond clair des sections */
+  --orange:    #c96a30;   /* couleur de contraste (accent) */
+  --white:     #ffffff;
+  --text-dark: #0f1a30;
+  --text-mid:  #3a4f70;
+  --radius:    10px;
+  --transition: 0.35s ease;
+}
+
+/* RESET & BASE */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* UTILITAIRES */
+.section-title {
+  font-family: 'Cormorant Garant', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+/* Ligne décorative orange sous les titres de section */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--orange);
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border: 2px solid var(--orange);
+}
+.btn-primary:hover {
+  background: #a8561f;
+  border-color: #a8561f;
+  transform: translateY(-2px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+}
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--white); transform:
+  translateY(-2px);
+}
+
+/* Animation d'apparition au scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* EN-TÊTE / NAVIGATION */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 5%;
+  background: rgba(26, 39, 68, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  transition: padding var(--transition);
+}
+.logo {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.04em;
+}
+.logo span { color: var(--orange); }
+
+/* Menu de navigation — liens d'ancrage */
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color var(--transition);
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 2px;
+  background: var(--orange);
+  transition: width var(--transition);
+}
+nav a:hover { color: var(--white); }
+nav a:hover::after { width: 100%; }
+
+/* Bouton burger pour mobile */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.burger span {
+  display: block;
+  width: 25px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* SECTION 1 — HÉROS */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+/* Image de fond du héros */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('images/fond.jpg') center/cover no-repeat;
+}
+/* Overlay pour rendre le texte lisible */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.595) 0%,
+    rgba(26, 39, 68, 0.462) 60%,
+    rgba(15, 26, 48, 0.636) 100%
+      );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+}
+.hero-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: 'Cormorant Garant', serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 1.4rem;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--light-blue);
+ }
+/* Texte clignotant "Défiler pour voir la suite" */
+.blink-text {
+  display: inline-block;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.06em;
+  margin-top: 1.5rem;
+  animation: blink 2s ease-in-out infinite;
+    }
+.blink-text::before { content: '↓  '; }
+.blink-text::after  { content: '  ↓'; }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* SECTION 2 — QUI SUIS-JE */
+#about {
+  background: var(--light-blue);
+  padding: 7rem 5%;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Photo de profil */
+.profile-img-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  box-shadow: 0 12px 40px rgba(26,39,68,0.2);
+}
+.profile-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Fiche d'identité */
+.identity-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(26,39,68,0.08);
+}
+.identity-card h3 {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.1rem;
+  color: var(--orange);
+  margin-bottom: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.identity-row {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--light-blue);
+  font-size: 0.9rem;
+}
+.identity-row:last-child { border-bottom: none; }
+.identity-label { font-weight: 600; color: var(--blue); min-width: 90px; flex-shrink: 0; }
+
+/* ---- Menus déroulants pour langues & compétences ---- */
+.details-group { margin-top: 1rem; }
+details {
+  background: var(--white);
+  border: 1px solid rgba(45,74,122,0.15);
+  border-radius: var(--radius);
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(26,39,68,0.05);
+}
+summary {
+  cursor: pointer;
+  padding: 0.9rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--navy);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+summary::after {
+  content: '＋';
+  font-size: 1rem;
+  color: var(--orange);
+  transition: transform var(--transition);
+}
+details[open] summary::after { transform: rotate(45deg); }
+.skills-list {
+  padding: 1rem 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.skill-item label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  margin-bottom: 0.35rem;
+}
+.skill-item label span {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* Barre de compétence */
+.bar-track {
+height: 8px;
+  background: var(--light-blue);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  border-radius: 99px;
+  width: 0; /* animé en JS */
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+
+/* SECTION 3 — COURT-MÉTRAGE */
+#shortfilm {
+  background: var(--white);
+  padding: 7rem 5%;
+}
+.film-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Affiche du court-métrage */
+.poster-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(26,39,68,0.18);
+  position: sticky;
+  top: 100px; /* reste visible en scrollant */
+}
+.poster-wrap img { width: 100%; height: auto; }
+
+.film-content .section-title { margin-bottom: 1.5rem; }
+.film-text {
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Bloc synopsis */
+.synopsis-block {
+  background: var(--light-blue);
+  border-left: 4px solid var(--orange);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.synopsis-block h4 {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+.synopsis-block p {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-mid);
+}
+
+/* SECTION 4 — DOCUMENTAIRE INTERACTIF */
+#docu {
+  background: var(--navy);
+  padding: 7rem 5%;
+  color: var(--white);
+}
+#docu .section-title { color: var(--white); }
+#docu .section-title::after { background: var(--orange); }
+.docu-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.docu-text { font-size: 0.95rem; color: rgba(255,255,255,0.8); }
+.docu-text .film-text { color: rgba(255,255,255,0.75); }
+.docu-text .synopsis-block {
+  background: rgba(255,255,255,0.07);
+  border-color: var(--orange);
+}
+.docu-text .synopsis-block h4 { color: var(--orange); }
+.docu-text .synopsis-block p { color: rgba(255,255,255,0.75); }
+
+/* Lecteur Vimeo responsive */
+.vimeo-wrap {
+  position: relative;
+  padding-bottom: 56.25%; /* ratio 16:9 */
+  height: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.vimeo-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* PIED DE PAGE — CONTACT + MENTIONS LÉGALES */
+footer {
+  background: var(--text-dark);
+  color: rgba(255,255,255,0.75);
+  padding: 5rem 5% 2rem;
+}
+.footer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-inner .section-title {
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.footer-inner .section-title::after { margin: 0.5rem auto 0; }
+.footer-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 2.5rem;
+}
+
+/* Formulaire de contact */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  text-align: left;
+}
+.form-group {
+  display: flex; flex-direction:
+  column; gap: 0.4rem;
+}
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.form-group input,
+.form-group textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color var(--transition);
+  outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--orange); }
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Message de confirmation envoi */
+#form-confirm {
+  display: none;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(201,106,48,0.12);
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+  color: var(--orange);
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Mentions légales */
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.mentions-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color var(--transition);
+}
+.mentions-btn:hover { color: var(--orange); }
+
+/* MODALE MENTIONS LÉGALES */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,15,30,0.8);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+.modal-box h2 {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.8rem;
+  color: var(--navy);
+  margin-bottom: 1.2rem;
+}
+.modal-box p, .modal-box li {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  margin-bottom: 0.7rem;
+  line-height: 1.7;
+}
+.modal-box ul { padding-left: 1.2rem; margin-bottom: 0.7rem; }
+.modal-close {
+  position: absolute;
+  top: 1.2rem; right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-mid);
+  line-height: 1;
+  transition: color var(--transition);
+}
+.modal-close:hover { color: var(--orange); }
+.modal-section-title {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.95rem;
+  margin: 1.2rem 0 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 900px) {
+  .about-grid   { grid-template-columns: 1fr; }
+  .film-grid    { grid-template-columns: 1fr; }
+  .docu-inner   { grid-template-columns: 1fr; }
+  .poster-wrap  { position: static; max-width: 260px; margin: 0 auto; }
+  .profile-img-wrap {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 680px) {
+  nav { display: none; }
+  nav.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    top: 60px;
+    background: rgba(26,39,68,0.98);
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 999;
+  }
+  nav.open a { font-size: 1.2rem; }
+  .burger { display: flex; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
